@@ -35,4 +35,9 @@ export const NodeSchema = new mongoose.Schema({
     required: true,
     description: "Absolute position of the node",
   },
+  functionName: {
+    type: String,
+    required: true,
+    description: "Function to be called by the node.",
+  },
 });

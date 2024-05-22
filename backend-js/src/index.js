@@ -1,12 +1,14 @@
 import bodyParser from "body-parser";
 import cors from "cors";
-import express, { Express } from "express";
+import express from "express";
 import mongoose from "mongoose";
+import "dotenv/config";
 
-import { MONGODB_CONNECTION_URI, port } from "./config";
-import { WorkflowRouter } from "./routes";
+import { WorkflowRouter } from "./routes/WorkflowRoutes.js";
+const MONGODB_CONNECTION_URI = process.env.MONGODB_CONNECTION_URI;
+const port = process.env.PORT;
 
-const app: Express = express();
+const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());

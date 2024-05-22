@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-import { EdgeSchema, NodeSchema, ViewportSchema } from "./index";
+import { NodeSchema } from "./NodeSchema.js";
+import { EdgeSchema } from "./EdgeSchema.js";
+import { ViewportSchema } from "./ViewportSchema.js";
 
 export const WorkflowSchema = new mongoose.Schema({
   nodes: {

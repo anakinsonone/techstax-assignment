@@ -23,12 +23,10 @@ const FilterDataPortal = ({
 
   // useEffect for fetching already stored workflows
   useEffect(() => {
-    axios
-      .get("https://reactflow-backend.onrender.com/api/workflows")
-      .then((res) => {
-        setWorkflows(res.data);
-        setSelectedWorkflow(res.data[0]);
-      });
+    axios.get("http://localhost:8000/api/workflows").then((res) => {
+      setWorkflows(res.data);
+      setSelectedWorkflow(res.data[0]);
+    });
   }, []);
 
   // api call for executing a selected workflow
@@ -39,15 +37,11 @@ const FilterDataPortal = ({
     formData.append("id", selectedWorkflow);
     formData.append("file", selectedFile);
     axios
-      .post(
-        "https://reactflow-backend.onrender.com/api/workflows/run",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+      .post("http://localhost:8000/api/workflows/run", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-      )
+      })
       .then((res) => {
         console.log(res.data);
         hidePortal();
